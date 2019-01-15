@@ -1,8 +1,9 @@
-.alert-left,
-.alert-right {
-  width: 50%;
-}
-
 .alert-right {
   float: right;
+}
+
+.alert-default,
+.alert-left,
+.alert-right {
+  opacity: 0.7;
 }

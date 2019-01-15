@@ -6,6 +6,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-image: url("./marvel_comics_wallpaper.jpg"); */
+  background: linear-gradient(rgba(20, 19, 19, 0.45), rgba(22, 20, 20, 0.45)),
+    url("./marvel_comics_wallpaper.jpg");
 }
 
 code {

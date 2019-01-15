@@ -11,6 +11,14 @@ const data = [
   { id: 4, name: "fourth" }
 ];
 
+function EndCard(props) {
+  return (
+    <div className="text-center pt-2">
+      <h1>Stay tuned for more heroes!</h1>
+    </div>
+  );
+}
+
 class MarvelCards extends Component {
   constructor(props) {
     super(props);
@@ -22,6 +30,11 @@ class MarvelCards extends Component {
     this.onSwipeRight = this.onSwipeRight.bind(this);
     this.removeAlert = this.removeAlert.bind(this);
     this.onDoubleTap = this.onDoubleTap.bind(this);
+    this.getEndCard = this.getEndCard.bind(this);
+  }
+
+  getEndCard() {
+    return <EndCard />;
   }
 
   removeAlert() {
@@ -76,6 +89,10 @@ class MarvelCards extends Component {
         </Card>
       );
     });
+    const alertStyle = {
+      position: "absolute",
+      width: "100%"
+    };
     return (
       <div>
         {/* creating alert for every swipe */}
@@ -84,6 +101,7 @@ class MarvelCards extends Component {
             className="alert-left text-center"
             color="danger"
             isOpen={this.state.visible}
+            style={alertStyle}
           >
             Nope
           </Alert>
@@ -92,12 +110,22 @@ class MarvelCards extends Component {
             className="alert-right text-center"
             color="success"
             isOpen={this.state.visible}
+            style={alertStyle}
           >
             Nice!
           </Alert>
-        ) : null}
+        ) : (
+          <Alert
+            color="secondary"
+            className="alert-default text-center"
+            style={alertStyle}
+          >
+            Welcome to SuperHeroes Tinder.Swipe Left to Reject.Swipe Right to
+            Like
+          </Alert>
+        )}
         {/* tinder cards */}
-        <CardWrapper>{cardDecks}</CardWrapper>
+        <CardWrapper addEndCard={this.getEndCard}>{cardDecks}</CardWrapper>
       </div>
     );
   }
