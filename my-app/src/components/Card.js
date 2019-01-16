@@ -9,11 +9,14 @@ import {
   Button
 } from "reactstrap";
 import "./Card.css";
+import { Link } from "react-router-dom";
+
+// const Hero = () => <h2>Hello World</h2>;
 
 class CardContent extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render() {
     return (
@@ -34,9 +37,12 @@ class CardContent extends Component {
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </CardText>
-            <Button color="primary">View Full Profile</Button>
+            <Link to="/hero">
+              <Button color="primary">View Full Profile</Button>
+            </Link>
           </CardBody>
         </Card>
+        {/* <Route path="/hero" component={Hero} /> */}
       </div>
     );
   }
