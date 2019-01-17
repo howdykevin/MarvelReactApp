@@ -3,13 +3,7 @@ import { Card, CardWrapper } from "react-swipeable-cards";
 import CardContent from "./Card";
 import { Alert } from "reactstrap";
 import "./TinderCards.css";
-
-const data = [
-  { id: 1, name: "First" },
-  { id: 2, name: "Second" },
-  { id: 3, name: "third" },
-  { id: 4, name: "fourth" }
-];
+import response from "./SampleData";
 
 function EndCard(props) {
   return (
@@ -77,7 +71,7 @@ class MarvelCards extends Component {
   }
 
   render() {
-    const cardDecks = data.map(item => {
+    const cardDecks = response.map(item => {
       return (
         <Card
           onSwipeLeft={this.onSwipeLeft}
@@ -85,7 +79,7 @@ class MarvelCards extends Component {
           onDoubleTap={this.onDoubleTap}
           key={item.id}
         >
-          <CardContent title={item.name} />
+          <CardContent content={item} />
         </Card>
       );
     });

@@ -13,7 +13,7 @@ class App extends Component {
             <Route exact={true} path="/" component={MarvelCards} />
           </div>
           <div>
-            <Route exact={true} path="/hero" component={HeroData} />
+            <Route path="/hero/:value" component={HeroData} />
           </div>
         </div>
       </Router>

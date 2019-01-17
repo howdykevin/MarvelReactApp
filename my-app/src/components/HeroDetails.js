@@ -2,9 +2,19 @@ import React, { Component } from "react";
 import { Container, Row, Col, Button } from "reactstrap";
 import "./HeroDetails.css";
 import { Link } from "react-router-dom";
+// axios = require("axios");
+// import Axios from "axios";
 
 class HeroData extends Component {
+  // componentWillMount() {
+  //   fetch("http://superheroapi.com/api/312492219266947/10")
+  //     .then(Response => Response.json())
+  //     .then(data => console.log(data))
+  //     .catch(error => console.log(error));
+  // }
+
   render() {
+    console.log(this.props.match.params);
     return (
       <Container fluid={true} className="mt-3 mt-xl-0">
         {/* image and appearance desc includes biography and powerstats */}
@@ -18,6 +28,8 @@ class HeroData extends Component {
           </Col>
           <Col xs="12" sm="4" md="12" lg="7" className="details">
             <h1>Lorem ipsom Text can you see me?</h1>
+            <p>{this.props.match.params.value}</p>
+            {/* <p>{this.props.location.param1}</p> */}
             <Link to="/">
               <Button color="info">Back</Button>
             </Link>

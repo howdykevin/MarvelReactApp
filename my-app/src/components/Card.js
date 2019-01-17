@@ -11,33 +11,36 @@ import {
 import "./Card.css";
 import { Link } from "react-router-dom";
 
-// const Hero = () => <h2>Hello World</h2>;
-
 class CardContent extends Component {
   // constructor(props) {
   //   super(props);
   // }
 
   render() {
+    const { name, appearance, biography, image, id } = this.props.content;
+    const newTo = {
+      pathname: `/hero/${id}`
+    };
     return (
       <div className="box">
         <Card className="content">
           <CardImg
             top
             width="100%"
-            src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=200"
-            alt="Card image cap"
+            src={image.url}
+            alt={name}
+            className="portfolio-img"
           />
           <CardBody>
-            <CardTitle>{this.props.title}</CardTitle>
-            <CardSubtitle className="d-none d-md-block">
-              Card subtitle
+            <CardTitle>
+              <h2>{name}</h2>
+            </CardTitle>
+            <CardSubtitle>
+              <p className="mb-1">Race:&nbsp;{appearance.race}</p>
+              <p>Gender:&nbsp;{appearance.gender}</p>
             </CardSubtitle>
-            <CardText className="d-none d-md-block">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </CardText>
-            <Link to="/hero">
+            <CardText>Published by:&nbsp;{biography.publisher}</CardText>
+            <Link to={newTo}>
               <Button color="primary">View Full Profile</Button>
             </Link>
           </CardBody>
@@ -49,3 +52,4 @@ class CardContent extends Component {
 }
 
 export default CardContent;
+// { "/hero/" + id }
