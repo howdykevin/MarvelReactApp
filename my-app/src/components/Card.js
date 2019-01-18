@@ -33,7 +33,16 @@ class CardContent extends Component {
           />
           <CardBody>
             <CardTitle>
-              <h2>{name}</h2>
+              <h2>
+                {name}
+                <span role="img" aria-label={biography.alignment}>
+                  {biography.alignment === "good"
+                    ? "😇"
+                    : biography.alignment === "bad"
+                    ? "😈"
+                    : "😎"}
+                </span>
+              </h2>
             </CardTitle>
             <CardSubtitle>
               <p className="mb-1">Race:&nbsp;{appearance.race}</p>

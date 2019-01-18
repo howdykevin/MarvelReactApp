@@ -3,7 +3,6 @@ import { Card, CardWrapper } from "react-swipeable-cards";
 import CardContent from "./Card";
 import { Alert } from "reactstrap";
 import "./TinderCards.css";
-import response from "./SampleData";
 
 function EndCard(props) {
   return (
@@ -18,13 +17,67 @@ class MarvelCards extends Component {
     super(props);
     this.state = {
       direction: "",
-      visible: true
+      visible: true,
+      heroes: [],
+      loading: true,
+      count: 0
     };
     this.onSwipeLeft = this.onSwipeLeft.bind(this);
     this.onSwipeRight = this.onSwipeRight.bind(this);
     this.removeAlert = this.removeAlert.bind(this);
-    this.onDoubleTap = this.onDoubleTap.bind(this);
     this.getEndCard = this.getEndCard.bind(this);
+    this.getData = this.getData.bind(this);
+    this.onSetResult = this.onSetResult.bind(this);
+    this.heroes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  }
+
+  getData() {
+    // check whether there are any cached value
+    const cachedHits = sessionStorage.getItem("hero");
+    if (cachedHits) {
+      let heroData = JSON.parse(cachedHits);
+      this.setState({
+        heroes: [...heroData],
+        loading: false
+      });
+      return;
+    }
+
+    const promises = this.heroes.map(item => {
+      return fetch(`https://superheroapi.com/api/312492219266947/${item}`).then(
+        response => response.json()
+      );
+    });
+
+    Promise.all(promises).then(data => {
+      const heroesData = data.map(item => item);
+      console.log(heroesData);
+      this.setState({
+        heroes: [...heroesData],
+        loading: false
+      });
+      // this.onSetResult("hero", heroesData);
+    });
+  }
+
+  onSetResult = (key, result) => {
+    sessionStorage.setItem(key, JSON.stringify(result));
+    this.setState({
+      heroes: [...result],
+      loading: false
+    });
+  };
+
+  componentDidMount() {
+    this.mounted = true;
+    if (this.mounted) {
+      this.getData();
+    }
+  }
+
+  componentWillUnmount() {
+    this.mounted = false;
+    this.onSetResult("hero", this.state.heroes.splice(this.state.count));
   }
 
   getEndCard() {
@@ -43,7 +96,8 @@ class MarvelCards extends Component {
     console.log("Swipe Left");
     this.setState(
       {
-        direction: "left"
+        direction: "left",
+        count: this.state.count + 1
       },
       () => {
         this.removeAlert();
@@ -57,7 +111,8 @@ class MarvelCards extends Component {
     // this.getAlerts("Right");
     this.setState(
       {
-        direction: "right"
+        direction: "right",
+        count: this.state.count + 1
       },
       () => {
         this.removeAlert();
@@ -66,12 +121,9 @@ class MarvelCards extends Component {
     );
   }
 
-  onDoubleTap(data) {
-    console.log("Double Tapped");
-  }
-
   render() {
-    const cardDecks = response.map(item => {
+    const { loading, heroes } = this.state;
+    const cardDecks = heroes.map(item => {
       return (
         <Card
           onSwipeLeft={this.onSwipeLeft}
@@ -89,37 +141,45 @@ class MarvelCards extends Component {
     };
     return (
       <div>
-        {/* creating alert for every swipe */}
-        {this.state.direction === "left" ? (
-          <Alert
-            className="alert-left text-center"
-            color="danger"
-            isOpen={this.state.visible}
-            style={alertStyle}
-          >
-            Nope
-          </Alert>
-        ) : this.state.direction === "right" ? (
-          <Alert
-            className="alert-right text-center"
-            color="success"
-            isOpen={this.state.visible}
-            style={alertStyle}
-          >
-            Nice!
-          </Alert>
+        {loading ? (
+          <div className="text-white text-center mt-5">
+            <h2>Loading...</h2>
+          </div>
         ) : (
-          <Alert
-            color="secondary"
-            className="alert-default text-center"
-            style={alertStyle}
-          >
-            Welcome to SuperHeroes Tinder.Swipe Left to Reject.Swipe Right to
-            Like
-          </Alert>
+          <div>
+            {/* creating alert for every swipe */}
+            {this.state.direction === "left" ? (
+              <Alert
+                className="alert-left text-center"
+                color="danger"
+                isOpen={this.state.visible}
+                style={alertStyle}
+              >
+                Nope
+              </Alert>
+            ) : this.state.direction === "right" ? (
+              <Alert
+                className="alert-right text-center"
+                color="success"
+                isOpen={this.state.visible}
+                style={alertStyle}
+              >
+                Nice!
+              </Alert>
+            ) : (
+              <Alert
+                color="secondary"
+                className="alert-default text-center"
+                style={alertStyle}
+              >
+                Welcome to SuperHeroes Tinder.Swipe Left to Reject.Swipe Right
+                to Like
+              </Alert>
+            )}
+            {/* tinder cards */}
+            <CardWrapper addEndCard={this.getEndCard}>{cardDecks}</CardWrapper>
+          </div>
         )}
-        {/* tinder cards */}
-        <CardWrapper addEndCard={this.getEndCard}>{cardDecks}</CardWrapper>
       </div>
     );
   }

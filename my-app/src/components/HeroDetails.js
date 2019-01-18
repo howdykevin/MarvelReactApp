@@ -54,6 +54,7 @@ class HeroData extends Component {
       powerstats,
       work
     } = this.state.portfolio;
+    const backTo = { pathname: "/" };
     return (
       <div>
         {loading ? (
@@ -145,7 +146,7 @@ class HeroData extends Component {
                     </tr>
                   </tbody>
                 </Table>
-                <Link to="/">
+                <Link to={backTo}>
                   <Button className="ml-2 mt-2 mb-2" size="lg" color="info">
                     Back
                   </Button>

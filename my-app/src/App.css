@@ -1,0 +1,5 @@
+@media only screen and (orientation: landscape) {
+  .App {
+    height: 1000px;
+  }
+}

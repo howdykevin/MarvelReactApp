@@ -7,3 +7,7 @@
 .alert-right {
   opacity: 0.7;
 }
+
+.cards_container {
+  margin-top: 16px;
+}
