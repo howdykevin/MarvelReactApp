@@ -130,6 +130,7 @@ class MarvelCards extends Component {
           onSwipeRight={this.onSwipeRight}
           onDoubleTap={this.onDoubleTap}
           key={item.id}
+          style={{ overflow: "auto" }}
         >
           <CardContent content={item} />
         </Card>
@@ -137,7 +138,8 @@ class MarvelCards extends Component {
     });
     const alertStyle = {
       position: "absolute",
-      width: "100%"
+      width: "100%",
+      zIndex: "2"
     };
     return (
       <div>
@@ -146,7 +148,7 @@ class MarvelCards extends Component {
             <h2>Loading...</h2>
           </div>
         ) : (
-          <div>
+          <div className="tinder">
             {/* creating alert for every swipe */}
             {this.state.direction === "left" ? (
               <Alert
@@ -172,8 +174,14 @@ class MarvelCards extends Component {
                 className="alert-default text-center"
                 style={alertStyle}
               >
-                Welcome to SuperHeroes Tinder.Swipe Left to Reject.Swipe Right
-                to Like
+                Welcome to SuperHeroes Tinder!Swipe Left to Reject
+                <span role="img" aria-label="thumbs-down">
+                  "👎"
+                </span>
+                .Swipe Right to Like
+                <span role="img" aria-label="like">
+                  "😍"
+                </span>
               </Alert>
             )}
             {/* tinder cards */}

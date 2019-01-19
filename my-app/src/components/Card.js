@@ -12,10 +12,6 @@ import "./Card.css";
 import { Link } from "react-router-dom";
 
 class CardContent extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
   render() {
     const { name, appearance, biography, image, id } = this.props.content;
     const newTo = {
@@ -23,7 +19,7 @@ class CardContent extends Component {
     };
     return (
       <div className="box">
-        <Card className="content">
+        <Card className="content" style={{ borderBottom: "0" }}>
           <CardImg
             top
             width="100%"

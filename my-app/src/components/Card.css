@@ -36,6 +36,14 @@
   }
 }
 
-/* TODOS:
-  2)margin top in mobile screens
- */
+@media only screen and (max-width: 830px) and (orientation: landscape) {
+  .card-body {
+    height: 90vh;
+  }
+  .box {
+    height: 200%;
+  }
+  .content {
+    height: 200%;
+  }
+}
