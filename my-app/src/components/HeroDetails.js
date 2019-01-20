@@ -19,7 +19,7 @@ class HeroData extends Component {
   //fetch hero profile based on id
   getData() {
     fetch(
-      `https://superheroapi.com/api/312492219266947/${
+      `https://superheroapi.com/api.php/312492219266947/${
         this.props.match.params.value
       }`,
       { signal: this.controller.signal }

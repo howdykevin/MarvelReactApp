@@ -68,7 +68,7 @@ class MarvelCards extends Component {
     // if there are no cached values, fetch api
     const promises = this.heroes.map(item => {
       return axios
-        .get(`https://superheroapi.com/api/312492219266947/${item}`)
+        .get(`https://superheroapi.com/api.php/312492219266947/${item}`)
         .then(response => response.data);
     });
 
