@@ -1,14 +1,14 @@
 # MarvelReactApp
 
-##All data are provided by @TheSuperHeroAPI.com
+## All data are provided by @TheSuperHeroAPI.com
 
-####Objectives:
+#### Objectives:
 
 The objective of this app is to display a list of superheroes and allow users to view the profile of the superhero they selected.
 
-#####Requirements: -[x]Responsive to desktop and mobile Clients -[x]Developed using React.js -[x]Display a list of characters in the form of TinderCards(view Wiki for images & videos) -[x]Link each character to their own details page and display relevant character information. -[x]Allows navigation and maintain browser history. React-router-dom library is used.
+##### Requirements: -[x]Responsive to desktop and mobile Clients -[x]Developed using React.js -[x]Display a list of characters in the form of TinderCards(view Wiki for images & videos) -[x]Link each character to their own details page and display relevant character information. -[x]Allows navigation and maintain browser history. React-router-dom library is used.
 
-#####Libraries used:
+##### Libraries used:
 
 1. React-swipeable-cards
 2. Reactstrap(Bootstrap4 for React)
@@ -17,7 +17,7 @@ The objective of this app is to display a list of superheroes and allow users to
 5. bootstrap
 6. react
 
-##IMPT NOTES:(This application is for development purposes only)
+## IMPT NOTES:(This application is for development purposes only)
 
 - To run this create-react-app, please make sure that "Allow-Control-Allow-Origin" plugin is installed in your Google Chrome.
   > The reason for this is because CORS error will be triggered without the use of the plugin. Proxies have been used to try and resolve CORS error however due to SuperHeroAPI server not having a valid SSL certificate, i am unable to use proxies.
