@@ -12,7 +12,7 @@
 /build
 
 # files to be ignored
-../src/secret.js
+/src/secret.js
 
 # misc
 .DS_Store
