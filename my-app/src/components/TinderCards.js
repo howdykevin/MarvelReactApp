@@ -208,6 +208,9 @@ class MarvelCards extends Component {
             )}
             {/* tinder cards */}
             <CardWrapper addEndCard={this.getEndCard}>{cardDecks}</CardWrapper>
+            <p className="text-center text-white">
+              Data attributed by TheSuperHeroApi
+            </p>
           </div>
         )}
       </div>
