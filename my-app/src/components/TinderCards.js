@@ -4,6 +4,7 @@ import CardContent from "./Card";
 import { Alert } from "reactstrap";
 import "./TinderCards.css";
 import axios from "axios";
+import key from "../secret";
 
 function EndCard(props) {
   return (
@@ -68,7 +69,7 @@ class MarvelCards extends Component {
     // if there are no cached values, fetch api
     const promises = this.heroes.map(item => {
       return axios
-        .get(`https://superheroapi.com/api.php/312492219266947/${item}`)
+        .get(`https://superheroapi.com/api.php/${key}/${item}`)
         .then(response => response.data);
     });
 

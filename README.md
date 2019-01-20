@@ -22,3 +22,7 @@ The objective of this app is to display a list of superheroes and allow users to
 4. react-router-dom
 5. bootstrap
 6. react
+
+##### Running:
+
+> Before running the application, please have the key from TheSuperHeroAPI ready and store it as a variable in src/secret.js

@@ -3,8 +3,7 @@ import { Container, Row, Col, Button } from "reactstrap";
 import "./HeroDetails.css";
 import { Link } from "react-router-dom";
 import { Table } from "reactstrap";
-
-// have allow-control-allow-cross origin plugin and open chrome in --ignore-certification-errors, chrome //--ignore-certificate-errors. window key+R
+import key from "../secret";
 
 class HeroData extends Component {
   constructor(props) {
@@ -19,7 +18,7 @@ class HeroData extends Component {
   //fetch hero profile based on id
   getData() {
     fetch(
-      `https://superheroapi.com/api.php/312492219266947/${
+      `https://superheroapi.com/api.php/${key}/${
         this.props.match.params.value
       }`,
       { signal: this.controller.signal }
