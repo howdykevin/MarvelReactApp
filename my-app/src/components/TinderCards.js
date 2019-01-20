@@ -3,6 +3,7 @@ import { Card, CardWrapper } from "react-swipeable-cards";
 import CardContent from "./Card";
 import { Alert } from "reactstrap";
 import "./TinderCards.css";
+import axios from "axios";
 
 function EndCard(props) {
   return (
@@ -28,7 +29,29 @@ class MarvelCards extends Component {
     this.getEndCard = this.getEndCard.bind(this);
     this.getData = this.getData.bind(this);
     this.onSetResult = this.onSetResult.bind(this);
-    this.heroes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    //id of heroes that are going to be displayed
+    this.heroes = [
+      1,
+      38,
+      30,
+      64,
+      75,
+      60,
+      149,
+      98,
+      70,
+      103,
+      213,
+      122,
+      687,
+      655,
+      157,
+      620,
+      332,
+      346,
+      390,
+      201
+    ];
   }
 
   getData() {
@@ -42,11 +65,11 @@ class MarvelCards extends Component {
       });
       return;
     }
-
+    // if there are no cached values, fetch api
     const promises = this.heroes.map(item => {
-      return fetch(`https://superheroapi.com/api/312492219266947/${item}`).then(
-        response => response.json()
-      );
+      return axios
+        .get(`https://superheroapi.com/api/312492219266947/${item}`)
+        .then(response => response.data);
     });
 
     Promise.all(promises).then(data => {
@@ -56,10 +79,9 @@ class MarvelCards extends Component {
         heroes: [...heroesData],
         loading: false
       });
-      // this.onSetResult("hero", heroesData);
     });
   }
-
+  // saving herodata into sessionStorage so that api is not fetch everytime user hits //back from profile page
   onSetResult = (key, result) => {
     sessionStorage.setItem(key, JSON.stringify(result));
     this.setState({
@@ -130,7 +152,7 @@ class MarvelCards extends Component {
           onSwipeRight={this.onSwipeRight}
           onDoubleTap={this.onDoubleTap}
           key={item.id}
-          style={{ overflow: "auto" }}
+          style={{ overflowY: "auto" }}
         >
           <CardContent content={item} />
         </Card>

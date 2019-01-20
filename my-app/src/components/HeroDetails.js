@@ -16,7 +16,7 @@ class HeroData extends Component {
     this.getData = this.getData.bind(this);
     this.controller = new AbortController();
   }
-
+  //fetch hero profile based on id
   getData() {
     fetch(
       `https://superheroapi.com/api/312492219266947/${
@@ -135,14 +135,7 @@ class HeroData extends Component {
                     </tr>
                     <tr>
                       <th>First-Apperance:</th>
-                      <td>
-                        {/* <ul>
-                          {biography["first-appearance"].map((item, index) => {
-                            return <li key={index}>item</li>;
-                          })}
-                        </ul> */}
-                        {biography["first-appearance"]}
-                      </td>
+                      <td>{biography["first-appearance"]}</td>
                     </tr>
                   </tbody>
                 </Table>

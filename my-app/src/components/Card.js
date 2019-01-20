@@ -50,11 +50,9 @@ class CardContent extends Component {
             </Link>
           </CardBody>
         </Card>
-        {/* <Route path="/hero" component={Hero} /> */}
       </div>
     );
   }
 }
 
 export default CardContent;
-// { "/hero/" + id }

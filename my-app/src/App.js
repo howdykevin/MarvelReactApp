@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import HeroData from "./components/HeroDetails";
 
+// Routing configuration happens here
 class App extends Component {
   render() {
     return (
